@@ -4,10 +4,12 @@ import glob
 
 # Detech and match features in the input images. 
 def detectAndMatchFeatures(img1, img2): 
+    # Use ORB feature detector
     orb = cv.ORB_create()
     keypoints1, descriptors1 = orb.detectAndCompute(img1, None)
     keypoints2, descriptors2 = orb.detectAndCompute(img2, None)
 
+    # Match the features from 2 descriptors. 
     bf = cv.BFMatcher(cv.NORM_HAMMING, crossCheck=True)
     matches = bf.match(descriptors1, descriptors2)
     matches = sorted(matches, key=lambda x: x.distance)
@@ -43,6 +45,7 @@ def warpImages(img1, img2, H):
 
     return warped_img2
 
+# Blend the 2 images together.
 def blendImages(img1, img2):
     resize_scale = (img1.shape[1], img1.shape[0])
     img2 = cv.resize(img2, resize_scale, interpolation= cv.INTER_LINEAR)
@@ -50,6 +53,7 @@ def blendImages(img1, img2):
     blended_img = img1 * mask + img2 * (1 - mask)
     return blended_img.astype(np.uint8)
 
+# Perform image stitching 
 def imageStitching(left_img, right_img): 
     keypoints1, keypoints2, matches = detectAndMatchFeatures(left_img, right_img)
     H, _ = estimateHomography(keypoints1, keypoints2, matches)
@@ -57,6 +61,7 @@ def imageStitching(left_img, right_img):
     output_img = blendImages(warped_img, left_img)
     return output_img
 
+# Stitch multiple images at once
 def imageStitchingMultiple(): 
     image_paths = sorted(glob.glob("images/*.jpg"))
     first = cv.imread(image_paths[0])
