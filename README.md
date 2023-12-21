@@ -1,8 +1,4 @@
-# Project Title
-
-Image Stitching using OpenCV. 
-
-## Description
+# Image Stitching using OpenCV. 
 
 An implementation of the famous image stitching technique from scratch using OpenCV. 
 Image stitching involves 4 crucial steps: 
