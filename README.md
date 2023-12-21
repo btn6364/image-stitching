@@ -20,11 +20,12 @@ pip3 install -r requirements.txt
 ```
 
 ### Executing program
-1. To execute the program, run the following command. 
+1. Save all your images in ```images``` folder. Also, the program only supports ```.jpg``` images.
+2. To execute the program, run the following command. 
 ```
 python3 image_stitching.py
 ```
-2. After you ran the program, the stitched image will be saved in ```stitched.png```
+3. After you ran the program, the stitched image will be saved in ```stitched.png```
 
 ## Authors
 
