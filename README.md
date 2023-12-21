@@ -1,6 +1,6 @@
 # Project Title
 
-Image Stitching from scratch using OpenCV. 
+Image Stitching using OpenCV. 
 
 ## Description
 
