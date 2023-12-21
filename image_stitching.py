@@ -74,6 +74,7 @@ def imageStitchingMultiple():
 
 if __name__=="__main__":
     stitched_img = imageStitchingMultiple()
+    cv.imwrite("stitched.png", stitched_img)
     cv.imshow("Stitched image", stitched_img)
     cv.waitKey(0)
     cv.destroyAllWindows()
